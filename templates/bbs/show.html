@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+<!doctype html>
+<html>
+    <head>
+        <center>
+        <h2>CUSTOMER INFORMATION</h2>
+    </head>
+    <body style="background-color:lightgoldenrodyellow">
+        {% csrf_token %}
+     
+        <table border=2>
+        <tr>
+            <th style="font-family:georgia,garamount,serif">Customer Names</th>
+            <th style="font-family:georgia,garamount,serif">Details</th>
+            <th style="font-family:georgia,garamount,serif">Balance</th>
+        </tr>
+       {% for x in Customer %}
+       <tr>
+           <td>{{x.name}}</td>
+           <td>{{ x.email }}</td>
+           <td>{{ x.current_balance }}</td>
+       </tr>
+       {% endfor %}
+       </table><br><br>
+       <a class ="btn btn-info" href ="{% url 'bbs:detail' %}">TRANSFER</a>&nbsp;
+       <a class ="btn btn-info" href ="{% url 'bbs:index' %}">
+        BACK TO HOMEPAGE</a>
+    </center> 
+    </body>
+</html>
+
+{% endblock %}

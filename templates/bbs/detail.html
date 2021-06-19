@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<!doctype html>
+<html> 
+<body style="background-color:lightgoldenrodyellow">
+    <center>
+    <h3 style="font-family:Piazzolla,garamount,serif">TRANSFER YOUR AMOUNT HERE</h3>
+    <form action="detail" method="post">
+        {% csrf_token %}
+        <p style="font-family:georgia,garamount,serif">USER NAME&nbsp;&nbsp;&nbsp;<input type="text" name="sender" placeholder="your name"></p><br>
+        <p style="font-family:georgia,garamount,serif">TRANSFER TO&nbsp;&nbsp;<input type="text" name="receiver" placeholder="send to"></p><br>
+        <p style="font-family:georgia,garamount,serif">AMOUNT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" name="transfer" placeholder="how much?"></p><br>
+        <p><input type="submit" placeholder="TRANSFER" class="btn btn-success">&nbsp;
+            <a class ="btn btn-info"  href ="{% url 'bbs:index' %}">
+            BACK TO HOMEPAGE</a>
+    </form>
+
+    <div>
+        {% for message in messages %}
+        <p>{{message}}</p>
+        {% endfor %}
+    </div>    
+    </body>
+</center>
+</html>
+{% endblock %}
